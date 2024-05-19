@@ -9,20 +9,23 @@ export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
-        <div className="min-h-screen bg-gray-100">
-            <nav className="bg-white border-b border-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-white">
+            <nav className="bg-gray-100 border-b border-gray-100 shadow-lg fixed w-full z-10">
+                <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
+                                    <h1 className="font-semibold text-xl text-gray-800 leading-tight">Smart Profile</h1>
                                 </Link>
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                                    Dashboard
+                                <NavLink href={route('layout')} active={route().current('layout')}>
+                                    レイアウト設定
+                                </NavLink>
+                                <NavLink href={route('layout')} active={route().current('layout')}>
+                                    項目一覧
                                 </NavLink>
                             </div>
                         </div>
@@ -90,7 +93,7 @@ export default function Authenticated({ user, header, children }) {
                     </div>
                 </div>
 
-                <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
+                {/* <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
@@ -110,7 +113,7 @@ export default function Authenticated({ user, header, children }) {
                             </ResponsiveNavLink>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </nav>
 
             {header && (
