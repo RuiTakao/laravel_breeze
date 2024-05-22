@@ -35,9 +35,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::prefix('admin')->group(function () {
-        Route::get('layout', [LayoutController::class, 'index'])->name('layout');
-    });
+    Route::get('layout', [LayoutController::class, 'index'])->name('layout');
+    // Route::prefix('admin')->group(function () {
+    // });
+    Route::patch('/layoutProfleEdit', [LayoutController::class, 'layoutProfleEdit'])->name('layoutProfleEdit');
 });
 
 require __DIR__ . '/auth.php';
