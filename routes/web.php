@@ -32,8 +32,9 @@ Route::get('/admin', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/layout', [LayoutController::class, 'index'])->name('layout');
-    Route::get('/item_list', [ItemListController::class, 'index'])->name('item_list');
     Route::patch('/layoutProfleEdit', [LayoutController::class, 'layoutProfleEdit'])->name('layoutProfleEdit');
+    Route::get('/item_list', [ItemListController::class, 'index'])->name('item_list');
+    Route::get('/item_list/show/{id}', [ItemListController::class, 'show'])->name('item_list.show');
 });
 
 require __DIR__ . '/auth.php';
