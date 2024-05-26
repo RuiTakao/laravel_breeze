@@ -20,7 +20,15 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "dompurify": "^3.1.4",
+        "draft-js": "^0.11.7",
+        "is-hotkey": "^0.2.0",
+        "is-url": "^1.2.4",
+        "marked": "^12.0.2",
         "react-cropper": "^2.3.3",
-        "react-easy-crop": "^5.0.7"
+        "react-easy-crop": "^5.0.7",
+        "slate": "^0.103.0",
+        "slate-history": "^0.100.0",
+        "slate-react": "^0.104.0"
     }
 }
