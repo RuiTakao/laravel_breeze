@@ -33,8 +33,11 @@ Route::get('/admin', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/layout', [LayoutController::class, 'index'])->name('layout');
     Route::patch('/layoutProfleEdit', [LayoutController::class, 'layoutProfleEdit'])->name('layoutProfleEdit');
+    
     Route::get('/item_list', [ItemListController::class, 'index'])->name('item_list');
     Route::get('/item_list/show/{id}', [ItemListController::class, 'show'])->name('item_list.show');
+    Route::post('/item_list/create_item', [ItemListController::class, 'createItem'])->name('item_list.create_item');
+    Route::patch('/item_list/update_item/{id}', [ItemListController::class, 'updateItem'])->name('item_list.update_item');
 });
 
 require __DIR__ . '/auth.php';

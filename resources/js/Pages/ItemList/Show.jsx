@@ -10,16 +10,8 @@ import { useState } from "react"
 
 export default function Show({ item, sub_items }) {
 
-    const [isEditItemModalOpen, setIsEditItemModalOpen] = useState(false);
     const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
     const [isEditSubItemModalOpen, setIsEditSubItemModalOpen] = useState(false);
-
-    const editItemSubmit = (e) => {
-        e.preventDefault();
-
-        patch(route('layoutProfleEdit'));
-        setIsEditItemModalOpen(false)
-    };
 
     const AddSubItemSubmit = e => {
         e.preventDefault();
@@ -42,8 +34,7 @@ export default function Show({ item, sub_items }) {
             <div className='pt-16'>
                 <div className="mx-auto pt-16" style={{ width: 768 }}>
                     <div className="border-b pb-2 border-neutral-300 flex justify-between items-center">
-                        <p className="font-semibold">{item.item_name}</p>
-                        <SecondaryButton onClick={() => setIsEditItemModalOpen(true)}>項目の編集</SecondaryButton>
+                        <p className="font-semibold">{item.item_name}一覧</p>
                     </div>
                     <PrimaryButton className="mt-4" onClick={() => setIsAddItemModalOpen(true)}>小項目追加</PrimaryButton>
                     <ul className="mt-8 pb-16">
@@ -91,65 +82,7 @@ export default function Show({ item, sub_items }) {
                             </li>
                         )}
                     </ul>
-                    <Modal
-                        show={isEditItemModalOpen}
-                        onClose={() => setIsEditItemModalOpen(false)}
-                    >
-                        <div className='p-4'>
-                            <div className="border-b pb-2 border-neutral-300">
-                                <p className="font-semibold">項目編集</p>
-                            </div>
-                            <form onSubmit={editItemSubmit}>
-                                <InputLabel htmlFor='item_name' value='項目名' className={'font-semibold mt-4'} />
-                                <TextInput
-                                    className={'w-full h-8 mt-1'}
-                                    id="item_name"
-                                // defaultValue={data.name}
-                                // onChange={(e) => setData('name', e.target.value)}
-                                // autoComplete="name"
-                                />
-                                <InputLabel htmlFor='item_order' value='位置変更' className={'font-semibold mt-4'} />
-                                <select name="item_order" id="item_order" className="mt-1">
-                                    <option value={1}>末尾に追加</option>
-                                </select>
-                                <div className='flex justify-between mt-4'>
-                                    <CancelButton children={'キャンセル'} onClick={() => setIsEditItemModalOpen(false)} />
-                                    <SecondaryButton>変更を保存</SecondaryButton>
-                                </div>
-                            </form>
-                        </div>
-                    </Modal>
-                    <Modal
-                        show={isAddItemModalOpen}
-                        onClose={() => setIsAddItemModalOpen(false)}
-                    >
-                        <div className='p-4'>
-                            <div className="border-b pb-2 border-neutral-300">
-                                <p className="font-semibold">小項目追加</p>
-                            </div>
-                            <form onSubmit={AddSubItemSubmit}>
-                                <InputLabel htmlFor='item_name' value='小項目名' className={'font-semibold mt-4'} />
-                                <TextInput
-                                    className={'w-full h-8 mt-1'}
-                                    id="item_name"
-                                // defaultValue={data.name}
-                                // onChange={(e) => setData('name', e.target.value)}
-                                // autoComplete="name"
-                                />
-                                <div className="bg-neutral-300 mt-4" style={{ height: 216 }}></div>
-                                <InputLabel htmlFor='item_name' value='概要' className={'font-semibold mt-4'} />
-                                <TextInput className={'w-full h-8 mt-1'} />
-                                <InputLabel htmlFor='item_order' value='追加する位置' className={'font-semibold mt-4'} />
-                                <select name="item_order" id="item_order" className="mt-1">
-                                    <option value={1}>末尾に追加</option>
-                                </select>
-                                <div className='flex justify-between mt-4'>
-                                    <CancelButton children={'キャンセル'} onClick={() => setIsAddItemModalOpen(false)} />
-                                    <SecondaryButton>変更を保存</SecondaryButton>
-                                </div>
-                            </form>
-                        </div>
-                    </Modal>
+                    
                 </div>
             </div>
         </Authenticated>

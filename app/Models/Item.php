@@ -9,6 +9,12 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'item_name',
+        'item_order',
+        'user_id'
+    ];
+
     public function sub_item()
     {
         return $this->hasMany(SubItem::class);
