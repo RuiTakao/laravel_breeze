@@ -41,6 +41,8 @@ export default function RichEditor({ data, setData }) {
                 renderElement={props => <Element {...props} />}
                 renderLeaf={props => <Text {...props} />}
                 onKeyDown={onKeyDown}
+                style={{minHeight: 160, border:"1px solid rgb(209 213 219)", borderRadius:8}}
+                className="p-2"
             />
         </Slate>
     )

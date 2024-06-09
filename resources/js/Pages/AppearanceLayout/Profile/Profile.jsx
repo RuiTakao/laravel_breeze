@@ -33,7 +33,7 @@ function Profile({ data }) {
 
     return (
         <div className='bg-sky-50 p-4 rounded-lg mx-auto mt-14 relative' style={{ width: 768 }}>
-            <div className='w-40 bg-neutral-300 h-40'></div>
+            <div className='w-40 bg-neutral-300 h-40'><img src={`storage/${data.image_path}`} alt="" /></div>
             <p className='font-semibold text-3xl mt-5'>{data.name}</p>
             <p className='font-semibold text-xl mt-4'>{data.work}</p>
             {perseText()}

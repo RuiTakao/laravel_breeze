@@ -33,6 +33,7 @@ Route::get('/admin', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/layout', [LayoutController::class, 'index'])->name('layout');
     Route::patch('/layoutProfleEdit', [LayoutController::class, 'layoutProfleEdit'])->name('layoutProfleEdit');
+    Route::patch('/FVEdit', [LayoutController::class, 'FVEdit'])->name('FVEdit');
     
     Route::get('/item_list', [ItemListController::class, 'index'])->name('item_list');
     Route::get('/item_list/show/{id}', [ItemListController::class, 'show'])->name('item_list.show');

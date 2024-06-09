@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Layout extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'work',
-        'profile_text',
-        'image_path'
+        'fv_image',
+        'layout_pattern	'
     ];
 
     public function user()

@@ -45,6 +45,11 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    
+    }
+    public function layout()
+    {
+        return $this->hasOne(Layout::class);
     }
 
     public function item()

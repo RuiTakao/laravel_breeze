@@ -15,7 +15,8 @@ export default function Edit({ isModalOpen, setIsModalOpen, profile }) {
     const { data, setData, patch } = useForm({
         name: profile.name,
         work: profile.work,
-        profile_text: profile.profile_text
+        profile_text: profile.profile_text,
+        image_path: profile.image_path
     });
 
     const submit = (e) => {
@@ -28,7 +29,7 @@ export default function Edit({ isModalOpen, setIsModalOpen, profile }) {
     const [base64Image, setBase64Image] = useState("")
 
     // 表示用
-    const [viewImage, setViewImage] = useState('')
+    const [viewImage, setViewImage] = useState(`storage/${data.image_path}`)
 
     const onInputImage = e => {
         const file = e.target.files;
@@ -49,8 +50,8 @@ export default function Edit({ isModalOpen, setIsModalOpen, profile }) {
             <div className='p-4'>
                 <form onSubmit={submit} encType="multipart/form-data">
                     <p className='border-b font-semibold text-xl pb-2'>プロフィール編集</p>
-                    <div className='bg-neutral-300 w-36 h-36 mt-4'>
-                        <input type={'file'} accept="image/jpeg, image/png" onChange={onInputImage} />
+                    <div className='bg-neutral-300 w-36 h-36 mt-4 relative'>
+                        <input type={'file'} accept="image/jpeg, image/png" onChange={onInputImage} style={{ width: 144, height: 144, opacity: 0, cursor:'pointer' }} className='absolute top-0 right-0' />
                         <img src={viewImage} />
                     </div>
 

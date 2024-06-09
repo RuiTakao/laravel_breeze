@@ -72,7 +72,7 @@ export default function EditImage({isImageModalOpen, setIsImageModalOpen, base64
             });
         }
         const reader = new FileReader()
-        reader.onload = e => setData('image', e.target.result)
+        reader.onload = e => setData('image_path', e.target.result)
         reader.readAsDataURL(blob)
 
 
