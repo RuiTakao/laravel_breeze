@@ -10,8 +10,10 @@ import Edit from "./Edit";
 export default function ItemList({ items }) {
 
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-    const [item, setItem] = useState({});
+    // const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [item, setItem] = useState({});
+
+    console.log(items)
 
     return (
         <Authenticated>
@@ -32,12 +34,12 @@ export default function ItemList({ items }) {
                                         href={route('item_list.show', { id: item.id })}
                                         active={route().current('item_list.show')}
                                     >
-                                        小項目一覧
+                                        {item.item_name}の設定へ
                                     </NavLink>
-                                    <SecondaryButton onClick={() => {
-                                        setIsEditModalOpen(true)
+                                    {/* <SecondaryButton onClick={() => {
+                                        setIsModalOpen(true)
                                         setItem(item)
-                                    }}>編集</SecondaryButton>
+                                    }}>編集</SecondaryButton> */}
                                 </div>
                             </li>
                         )}
@@ -47,7 +49,8 @@ export default function ItemList({ items }) {
                         setIsAddModalOpen={setIsAddModalOpen}
                         items={items}
                     />
-                    <Edit isModalOpen={isEditModalOpen} setIsModalOpen={setIsEditModalOpen} items={items} item={item} />
+                    {/* <Edit isModalOpen={isEditModalOpen} setIsModalOpen={setIsEditModalOpen} items={items} item={item} /> */}
+                    {/* <Edit isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} /> */}
                 </div>
             </div>
         </Authenticated>

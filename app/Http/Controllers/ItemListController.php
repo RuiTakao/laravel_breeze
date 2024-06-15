@@ -30,22 +30,11 @@ class ItemListController extends Controller
 
     public function createItem(Request $request)
     {
-
-        $item_order = $request->item_order;
-
         $data = User::find(Auth::id())->item()->get();
-        if (count($data) >= $item_order) {
-            foreach($data as $d) {
-                if ($d->item_order >= $item_order) {
-                    $update_data = Item::find($d->id);
-                    $update_data->update(['item_order' => $update_data->item_order + 1]);
-                }
-            }
-        }
-
+        
         $save_data = new Item();
         $save_data->item_name = $request->item_name;
-        $save_data->item_order = $request->item_order;
+        $save_data->item_order = count($data);
         $save_data->user_id = Auth::id();
         $save_data->save();
 
@@ -57,11 +46,12 @@ class ItemListController extends Controller
 
         $item = Item::find($id);
         $updateArray = [];
+        // dd($request);
         if (!is_null($request->item_name)) {
             $updateArray = ['item_name' => $request->item_name];
         }
         $request_order = $request->item_order;
-        if (!is_null($request_order)) {
+        if ($request_order !== 0) {
             if ($item->item_order !== $request_order) {
                 $data = User::find(Auth::id())->item()->get();
                 foreach ($data as $d) {
@@ -74,6 +64,7 @@ class ItemListController extends Controller
             }
         }
 
+        // dd($updateArray);
         $item->update($updateArray);
 
         return Redirect::route('item_list');

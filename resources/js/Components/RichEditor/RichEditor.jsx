@@ -16,7 +16,7 @@ export default function RichEditor({ data, setData }) {
 
     const editor = useMemo(() => withInlines(withHistory(withReact(createEditor()))), [])
 
-    const initialValue = JSON.parse(data)
+    const initialValue = data ? JSON.parse(data) : [{ type: 'paragraph', children: [{ text: '' }] }]
 
     const onKeyDown = e => {
         for (const hotkey in HOTKEYS) {
@@ -41,7 +41,7 @@ export default function RichEditor({ data, setData }) {
                 renderElement={props => <Element {...props} />}
                 renderLeaf={props => <Text {...props} />}
                 onKeyDown={onKeyDown}
-                style={{minHeight: 160, border:"1px solid rgb(209 213 219)", borderRadius:8}}
+                style={{ minHeight: 160, border: "1px solid rgb(209 213 219)", borderRadius: 8 }}
                 className="p-2"
             />
         </Slate>

@@ -4,7 +4,6 @@ import Modal from "@/Components/Modal";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import { useForm } from "@inertiajs/react";
-import { useEffect, useState } from "react";
 
 export default function Add({ isAddModalOpen, setIsAddModalOpen, items }) {
 
@@ -19,10 +18,6 @@ export default function Add({ isAddModalOpen, setIsAddModalOpen, items }) {
         setIsAddModalOpen(false)
     };
 
-    const [selected, setSelected] = useState(items.length + 1)
-
-    useEffect(() => setData('item_order', selected), [selected])
-
     return (
         <Modal
             show={isAddModalOpen}
@@ -33,27 +28,16 @@ export default function Add({ isAddModalOpen, setIsAddModalOpen, items }) {
                     <p className="font-semibold">項目追加</p>
                 </div>
                 <form onSubmit={submit}>
-                    <InputLabel htmlFor='item_name' value='項目名' className={'font-semibold mt-4'} />
+                    <InputLabel htmlFor='item_name' value='項目名を入力' className={'font-semibold mt-4'} />
                     <TextInput
                         className={'w-full h-8 mt-1'}
                         id="item_name"
                         onChange={(e) => setData('item_name', e.target.value)}
                         autoComplete="item_name"
                     />
-                    <InputLabel htmlFor='item_order' value='追加する位置' className={'font-semibold mt-4'} />
-                    <select autoComplete="item_order" id="item_order" className="mt-1" defaultValue={selected} onChange={(e) => setSelected(e.target.value)}>
-                        {function () {
-                            const option = []
-                            items.forEach(item => {
-                                option.push(<option key={item.item_order} value={item.item_order}>{item.item_order === 1 ? '先頭に追加' : `${item.item_name}の前に追加`}</option>)
-                            });
-                            return option
-                        }()}
-                        <option key={items.length + 1} value={items.length + 1}>末尾に追加</option>
-                    </select>
                     <div className='flex justify-between mt-4'>
                         <CancelButton children={'キャンセル'} onClick={() => setIsAddModalOpen(false)} />
-                        <SecondaryButton>変更を保存</SecondaryButton>
+                        <SecondaryButton>追加</SecondaryButton>
                     </div>
                 </form>
             </div>
