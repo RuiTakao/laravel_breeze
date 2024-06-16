@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ItemListController;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\PortFolioController;
@@ -51,6 +52,8 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/sub_item_list/create', [ItemListController::class, 'createSubItem'])->name('sub_item_list.create_subItem');
         Route::patch('/sub_item_list/update/{id}', [ItemListController::class, 'updateSubItem'])->name('sub_item_list.update_subItem');
+
+        Route::get('/history', [HistoryController::class, 'index'])->name('history');
     });
 });
 

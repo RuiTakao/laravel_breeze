@@ -26,6 +26,17 @@ export default function ItemList({ items }) {
                     </div>
                     <PrimaryButton onClick={() => setIsAddModalOpen(true)} className="mt-4">項目追加</PrimaryButton>
                     <ul className="mt-8">
+                        <li className="flex justify-between items-center mt-4 bg-gray-200 p-2 font-semibold">
+                            経歴
+                            <div className="flex gap-4">
+                                <NavLink
+                                    href={route('history')}
+                                    active={route().current('history')}
+                                >
+                                    経歴の設定へ
+                                </NavLink>
+                            </div>
+                        </li>
                         {items.map(item =>
                             <li key={item.item_order} className="flex justify-between items-center mt-4 bg-gray-200 p-2 font-semibold">
                                 {item.item_name}
