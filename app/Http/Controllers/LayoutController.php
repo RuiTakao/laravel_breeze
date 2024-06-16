@@ -71,4 +71,13 @@ class LayoutController extends Controller
 
         return Redirect::route('layout');
     }
+
+    public function LayoutPatternEdit(Request $request): RedirectResponse
+    {
+        $id = User::find(Auth::id())->layout->id;
+        $layout = Layout::find($id);
+        $layout->update($request->all());
+
+        return Redirect::route('layout');
+    }
 }

@@ -12,7 +12,7 @@ const HOTKEYS = {
     'mod+`': 'code',
 }
 
-export default function RichEditor({ data, setData }) {
+export default function RichEditor({ data, setData, dataName }) {
 
     const editor = useMemo(() => withInlines(withHistory(withReact(createEditor()))), [])
 
@@ -34,7 +34,7 @@ export default function RichEditor({ data, setData }) {
             initialValue={initialValue}
             onChange={value => {
                 console.log(value)
-                setData('profile_text', JSON.stringify(value))
+                setData(dataName, JSON.stringify(value))
             }}
         >
             <Editable

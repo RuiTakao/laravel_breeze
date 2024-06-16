@@ -11,7 +11,7 @@ class Layout extends Model
 
     protected $fillable = [
         'fv_image',
-        'layout_pattern	'
+        'layout_pattern'
     ];
 
     public function user()

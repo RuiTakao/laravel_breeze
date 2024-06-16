@@ -29,7 +29,7 @@ export default function Edit({ isModalOpen, setIsModalOpen, profile }) {
     const [base64Image, setBase64Image] = useState("")
 
     // 表示用
-    const [viewImage, setViewImage] = useState(`storage/${data.image_path}`)
+    const [viewImage, setViewImage] = useState(`../storage/${data.image_path}`)
 
     const onInputImage = e => {
         const file = e.target.files;
@@ -66,7 +66,7 @@ export default function Edit({ isModalOpen, setIsModalOpen, profile }) {
                     <InputLabel htmlFor='work' value={'仕事名'} className={'font-semibold mt-4'} />
                     <TextInput className={'w-full h-8 mt-1'} id="work" defaultValue={data.work} />
                     <InputLabel value={'プロフィール文'} className={'font-semibold mt-4'} />
-                    <RichEditor data={data.profile_text} setData={setData} />
+                    <RichEditor data={data.profile_text} setData={setData}  dataName={'profile_text'} />
                     <input type={'hidden'} autoComplete="name" />
                     <div className='flex justify-between mt-4'>
                         <CancelButton children={'キャンセル'} onClick={() => setIsModalOpen(false)} />

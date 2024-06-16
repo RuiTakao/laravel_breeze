@@ -32,7 +32,7 @@ function FV({ layout }) {
     }
 
     return (
-        <div className="bg-neutral-300 bg-center bg-cover relative" style={{ height: 329, backgroundImage: `url(storage/${layout.fv_image})` }} >
+        <div className="bg-neutral-300 bg-center bg-cover relative" style={{ height: 329, backgroundImage: `url(../storage/${layout.fv_image})` }} >
             <form id='FVEdit' onSubmit={submit} encType="multipart/form-data">
                 <input type={'file'} accept="image/jpeg, image/png" onChange={onInputImage} onClick={e => e.target.value = ""} className='opacity-0 absolute top-0 left-0 w-full h-full' />
             </form>

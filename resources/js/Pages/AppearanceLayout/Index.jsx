@@ -3,6 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import Profile from './Profile/Profile';
 import FV from './FV';
+import Sidebar from './Sidebar/Sidebar';
 
 function AppearanceLayout({ auth, profile, layout }) {
 
@@ -13,12 +14,9 @@ function AppearanceLayout({ auth, profile, layout }) {
             <Head title="レイアウト設定｜Smart Profile" />
             <div className='mr-64 pt-16'>
                 <FV layout={layout} />
-                <Profile data={profile} />
+                <Profile profile={profile} layout={layout} />
             </div>
-            <div className='h-screen bg-gray-100 w-64 fixed right-0 top-0 shadow-lg'>
-
-            </div>
-
+            <Sidebar layout={layout} />
         </AuthenticatedLayout>
     );
 }
